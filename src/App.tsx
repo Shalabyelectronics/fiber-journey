@@ -60,7 +60,7 @@ export default function App() {
         </span>
       </header>
 
-      <main className="grid gap-4 p-4 lg:grid-cols-[minmax(0,1fr)_400px]">
+      <main className="grid gap-4 p-4 pb-24 lg:grid-cols-[minmax(0,1fr)_400px]">
         {/* ── 3D viewport ── */}
         <div className="relative h-[62vh] min-h-[500px] overflow-hidden rounded-lg border border-emerald-900/60 bg-black/70">
           <Canvas camera={{ position: [0, 0.4, 11.8], fov: 50 }} dpr={[1, 2]}>
@@ -148,33 +148,37 @@ export default function App() {
             </div>
           </div>
 
-          <div className="flex gap-2">
-            <button
-              onClick={advance}
-              className="flex-1 rounded border border-cyan-500/70 bg-cyan-950/50 px-4 py-3 text-sm tracking-widest text-cyan-200 glow-text transition-colors hover:bg-cyan-900/50"
-            >
-              {NEXT_LABEL[stage]}
-            </button>
-            {running && (
-              <button
-                onClick={() => setStage('idle')}
-                className="rounded border border-emerald-900 px-3 text-xs text-emerald-600 hover:border-emerald-600"
-              >
-                RESET
-              </button>
-            )}
-          </div>
         </aside>
       </main>
 
       {/* ── the exam ── */}
-      <section className="border-t border-emerald-900/50 p-6">
+      <section className="border-t border-emerald-900/50 p-6 pb-28">
         <Quiz unlocked={unlocked} />
       </section>
 
-      <footer className="border-t border-emerald-900/50 px-6 py-3 text-[10px] text-emerald-800">
+      <footer className="border-t border-emerald-900/50 px-6 py-3 pb-28 text-[10px] text-emerald-800">
         fiber journey · render → reconcile → commit, one honest mental model · everything runs locally, nothing leaves this page
       </footer>
+
+      {/* ── pinned run control: always reachable, never scrolls out of view with the 3D scene ── */}
+      <div className="fixed inset-x-0 bottom-0 z-20 border-t border-cyan-900/60 bg-black/90 px-4 py-3 shadow-[0_-4px_24px_rgba(0,0,0,0.6)] backdrop-blur-sm">
+        <div className="mx-auto flex max-w-screen-xl gap-2">
+          <button
+            onClick={advance}
+            className="flex-1 rounded border border-cyan-500/70 bg-cyan-950/50 px-4 py-3 text-sm tracking-widest text-cyan-200 glow-text transition-colors hover:bg-cyan-900/50"
+          >
+            {NEXT_LABEL[stage]}
+          </button>
+          {running && (
+            <button
+              onClick={() => setStage('idle')}
+              className="rounded border border-emerald-900 px-3 text-xs text-emerald-600 hover:border-emerald-600"
+            >
+              RESET
+            </button>
+          )}
+        </div>
+      </div>
     </div>
   )
 }
