@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background: #030706;
+  color: #d1fae5;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+.glow-text {
+  text-shadow: 0 0 10px currentColor;
+}
+
+.node-label {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.25;
+  color: #a7f3d0;
+  text-shadow: 0 0 6px rgba(52, 211, 153, 0.8), 0 0 2px #000;
+  white-space: nowrap;
+  text-align: center;
+  user-select: none;
+}
+
+.node-sub {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-top: 1px;
+}
+
+.tree-title {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  white-space: nowrap;
+  text-align: center;
+  user-select: none;
+}
+
+.tree-title small {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  opacity: 0.65;
+  text-transform: none;
+}
